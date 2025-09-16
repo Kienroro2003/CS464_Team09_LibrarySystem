@@ -8,7 +8,7 @@ namespace LS
 {
     public partial class UserWindow : Window, INotifyPropertyChanged
     {
-        Database1Entities db = new Database1Entities();
+        Database1Entities1 db = new Database1Entities1();
 
         private ObservableCollection<User> _users;
         public ObservableCollection<User> Users

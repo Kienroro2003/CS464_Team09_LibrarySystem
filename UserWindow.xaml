@@ -62,6 +62,9 @@
                                     <TextBlock Text="Gender: " FontWeight="Bold" Foreground="Gray">
                                         <Run Text="{Binding gender}"/>
                                     </TextBlock>
+                                    <TextBlock Text="Birthday: " FontWeight="Bold" Foreground="Gray">
+                                        <Run Text="{Binding birthday}"/>
+                                    </TextBlock>
                                     <TextBlock Text="Phone: " FontWeight="Bold" Foreground="Gray">
                                         <Run Text="{Binding phone}"/>
                                     </TextBlock>

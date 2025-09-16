@@ -12,26 +12,22 @@ namespace LS
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Order()
         {
-            this.Orders = new HashSet<Order>();
+            this.Order_Detail = new HashSet<Order_Detail>();
         }
     
         public int Id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string fullname { get; set; }
-        public string gender { get; set; }
-        public Nullable<System.DateTime> birthday { get; set; }
-        public string address { get; set; }
-        public Nullable<int> role_id { get; set; }
-        public string phone { get; set; }
+        public Nullable<System.DateTime> start_date { get; set; }
+        public Nullable<System.DateTime> end_date { get; set; }
+        public Nullable<int> total_book { get; set; }
+        public Nullable<int> user_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual ICollection<Order_Detail> Order_Detail { get; set; }
+        public virtual User User { get; set; }
     }
 }

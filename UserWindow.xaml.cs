@@ -1,22 +1,30 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace LS
 {
-    public partial class UserWindow : Window
+    public partial class UserWindow : Window, INotifyPropertyChanged
     {
         Database1Entities db = new Database1Entities();
 
-        // Dùng ObservableCollection để UI tự động cập nhật khi thay đổi
-        public ObservableCollection<User> Users { get; set; }
+        private ObservableCollection<User> _users;
+        public ObservableCollection<User> Users
+        {
+            get => _users;
+            set
+            {
+                _users = value;
+                OnPropertyChanged(); // báo cho UI biết thuộc tính đã đổi
+            }
+        }
 
         public UserWindow()
         {
             InitializeComponent();
-
-            // Gắn DataContext cho Window để Binding trong XAML hoạt động
-            this.DataContext = this;
+            DataContext = this;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -27,7 +35,6 @@ namespace LS
         public void LoadUsers()
         {
             Users = new ObservableCollection<User>(db.Users.ToList());
-            DataContext = this; // refresh lại Binding
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
@@ -46,9 +53,16 @@ namespace LS
                 {
                     db.Users.Remove(user);
                     db.SaveChanges();
-                    Users.Remove(selectedUser); // cập nhật ngay UI
+                    Users.Remove(selectedUser);
                 }
             }
+        }
+
+        // Triển khai INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

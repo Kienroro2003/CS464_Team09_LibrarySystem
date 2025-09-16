@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CS464_Team09_LibrarySystem.Properties
+namespace LS.Properties
 {
 
 

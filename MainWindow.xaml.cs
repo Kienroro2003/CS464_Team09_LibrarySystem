@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CS464_Team09_LibrarySystem
+namespace LS
 {
     /// <summary>
-    /// Interaction logic for Form_User.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Form_User : Window
+    public partial class MainWindow : Window
     {
-        public Form_User()
+        public MainWindow()
         {
             InitializeComponent();
         }

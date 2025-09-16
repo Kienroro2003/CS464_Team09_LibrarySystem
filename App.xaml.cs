@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CS464_Team09_LibrarySystem
+namespace LS
 {
     /// <summary>
     /// Interaction logic for App.xaml

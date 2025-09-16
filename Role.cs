@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CS464_Team09_LibrarySystem
+namespace LS
 {
     using System;
     using System.Collections.Generic;

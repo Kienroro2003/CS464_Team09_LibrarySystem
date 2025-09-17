@@ -64,5 +64,12 @@ namespace LS
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            Form_Search_user form = new Form_Search_user();
+            form.ShowDialog();
+            LoadUsers();
+        }
     }
 }

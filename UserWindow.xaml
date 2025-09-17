@@ -16,7 +16,16 @@
                    Margin="20"/>
 
         <!-- Dòng 2: Button căn phải -->
-        <Button Content="➕ Thêm"
+
+        <!-- Dòng 2: Button căn phải -->
+        <StackPanel Orientation="Horizontal" 
+            HorizontalAlignment="Right" 
+            DockPanel.Dock="Top"
+            Margin="0,0,30,0">
+            <!-- Nút Tìm kiếm -->
+
+
+            <Button Content="🔍 Tìm Kiếm"
                 Width="117"
                 HorizontalAlignment="Right"
                 Margin="0,0,32.6,0"
@@ -25,8 +34,21 @@
                 FontWeight="Bold"
                 Padding="5"
                 DockPanel.Dock="Top"
-                Click="AddUser_Click"
+                Click="Search_Click"
                 Height="42"/>
+
+            <!-- Nút Thêm -->
+            <Button Content="➕ Thêm"
+            Width="117"
+            Height="42"
+            Background="#59c241"
+            Foreground="White"
+            FontWeight="Bold"
+            Padding="5"
+            Click="AddUser_Click"/>
+        </StackPanel>
+
+        
 
         <!-- Danh sách người dùng -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
@@ -53,7 +75,13 @@
                                 </Grid.ColumnDefinitions>
 
                                 <!-- Ảnh người dùng -->
-                                <Ellipse Width="80" Height="80" Fill="#ddd" Grid.Column="0" />
+                                <Ellipse Width="80" Height="80" Grid.Column="0">
+                                    <Ellipse.Fill>
+                                        <ImageBrush 
+                                            ImageSource="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" 
+                                            Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+                                 </Ellipse>
 
                                 <!-- Thông tin người dùng -->
                                 <StackPanel Grid.Column="1" Margin="10,0,0,0">

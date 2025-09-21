@@ -20,7 +20,7 @@ namespace LS
     /// </summary>
     public partial class Form_User : Window
     {
-        Database1Entities db = new Database1Entities();
+        Database1Entities1 db = new Database1Entities1();
 
         private ObservableCollection<User> _users;
 
@@ -80,7 +80,8 @@ namespace LS
             db.Users.Add(user);
             db.SaveChanges();
             MessageBox.Show("Thêm người dùng thành công thành công");
-            Form_User form = new Form_User();
+            this.DialogResult = true; // Quan trọng
+            this.Close();
 
         }
     }

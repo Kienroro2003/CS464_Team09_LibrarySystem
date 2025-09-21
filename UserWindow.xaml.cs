@@ -8,7 +8,7 @@ namespace LS
 {
     public partial class UserWindow : Window, INotifyPropertyChanged
     {
-        Database1Entities db = new Database1Entities();
+        Database1Entities1 db = new Database1Entities1();
 
         private ObservableCollection<User> _users;
         public ObservableCollection<User> Users
@@ -63,6 +63,13 @@ namespace LS
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            Form_Search_user form = new Form_Search_user();
+            form.ShowDialog();
+            LoadUsers();
         }
     }
 }

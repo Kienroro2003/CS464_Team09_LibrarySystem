@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LS"
         mc:Ignorable="d"
-        Title="Rent Book" Height="450" Width="800">
+        Title="Rent Book" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -27,8 +27,8 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="Chọn độc giả:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                <!--<ComboBox x:Name="UserComboBox" Grid.Row="0" Grid.Column="1" Margin="5"/>-->
-                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="Username" IsEnabled="False"/>
+                <ComboBox x:Name="UserComboBox" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                <!--<TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="Username" IsEnabled="False"/>-->
 
                 <Label Content="Ngày bắt đầu:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold"/>
                 <DatePicker x:Name="StartDatePicker" Grid.Row="1" Grid.Column="1" Margin="5"/>
@@ -61,11 +61,11 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID Sách" Binding="{Binding book_id}" Width="*"/>
                             <DataGridTextColumn Header="Tên sách" Binding="{Binding Book.name}" Width="2*"/>
-                            <DataGridTextColumn Header="Số lượng" Binding="{Binding quantity}" Width="*"/>
+                            <DataGridTextColumn Header="Số lượng" Binding="{Binding quanlity}" Width="*"/>
                             <DataGridTemplateColumn Width="Auto">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Xóa" CommandParameter="{Binding book_id}" />
+                                        <Button x:Name="DeleteButton" Content="Xóa" CommandParameter="{Binding book_id}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

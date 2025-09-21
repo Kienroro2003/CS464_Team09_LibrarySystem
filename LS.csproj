@@ -106,29 +106,6 @@
     <Compile Include="Form_User.xaml.cs">
       <DependentUpon>Form_User.xaml</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\App.g.cs" />
-    <Compile Include="obj\Debug\App.g.i.cs" />
-    <Compile Include="obj\Debug\Form_Search_user.g.cs" />
-    <Compile Include="obj\Debug\Form_Search_user.g.i.cs" />
-    <Compile Include="obj\Debug\Form_User.g.cs" />
-    <Compile Include="obj\Debug\Form_User.g.i.cs" />
-    <Compile Include="obj\Debug\LS_Content.g.cs" />
-    <Compile Include="obj\Debug\LS_Content.g.i.cs" />
-    <Compile Include="obj\Debug\MainWindow.g.cs" />
-    <Compile Include="obj\Debug\MainWindow.g.i.cs" />
-    <Compile Include="obj\Debug\RentalHistory.g.cs" />
-    <Compile Include="obj\Debug\RentalHistory.g.i.cs" />
-    <Compile Include="obj\Debug\RentBook.g.cs" />
-    <Compile Include="obj\Debug\RentBook.g.i.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="obj\Debug\UserWindow.g.cs" />
-    <Compile Include="obj\Debug\UserWindow.g.i.cs" />
-    <Compile Include="obj\Debug\View\AddBook.g.i.cs" />
-    <Compile Include="obj\Debug\View\Book.g.i.cs" />
-    <Compile Include="obj\Debug\View\EditBook.g.i.cs" />
-    <Compile Include="obj\Debug\View\Login.g.i.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -240,6 +217,29 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="packages\EntityFramework.6.5.1\.signature.p7s" />
+    <None Include="packages\EntityFramework.6.5.1\buildTransitive\EntityFramework.props" />
+    <None Include="packages\EntityFramework.6.5.1\buildTransitive\EntityFramework.targets" />
+    <None Include="packages\EntityFramework.6.5.1\buildTransitive\net6.0\EntityFramework.props" />
+    <None Include="packages\EntityFramework.6.5.1\buildTransitive\net6.0\EntityFramework.targets" />
+    <None Include="packages\EntityFramework.6.5.1\build\EntityFramework.DefaultItems.props" />
+    <None Include="packages\EntityFramework.6.5.1\build\EntityFramework.props" />
+    <None Include="packages\EntityFramework.6.5.1\build\EntityFramework.targets" />
+    <None Include="packages\EntityFramework.6.5.1\build\net6.0\EntityFramework.props" />
+    <None Include="packages\EntityFramework.6.5.1\build\net6.0\EntityFramework.targets" />
+    <None Include="packages\EntityFramework.6.5.1\content\net40\App.config.install.xdt" />
+    <None Include="packages\EntityFramework.6.5.1\content\net40\App.config.transform" />
+    <None Include="packages\EntityFramework.6.5.1\content\net40\Web.config.install.xdt" />
+    <None Include="packages\EntityFramework.6.5.1\content\net40\Web.config.transform" />
+    <None Include="packages\EntityFramework.6.5.1\EntityFramework.6.5.1.nupkg" />
+    <None Include="packages\EntityFramework.6.5.1\README.md" />
+    <None Include="packages\EntityFramework.6.5.1\tools\EntityFramework6.PS2.psd1" />
+    <None Include="packages\EntityFramework.6.5.1\tools\EntityFramework6.PS2.psm1" />
+    <None Include="packages\EntityFramework.6.5.1\tools\EntityFramework6.psd1" />
+    <None Include="packages\EntityFramework.6.5.1\tools\EntityFramework6.psm1" />
+    <None Include="packages\EntityFramework.6.5.1\tools\init.ps1" />
+    <None Include="packages\EntityFramework.6.5.1\tools\install.ps1" />
+    <None Include="packages\EntityFramework.6.5.1\tools\net6.0\any\ef6.runtimeconfig.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -266,6 +266,35 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
       <LastGenOutput>DataModel.cs</LastGenOutput>
     </Content>
+    <Content Include="packages\EntityFramework.6.5.1\build\Microsoft.Data.Entity.Build.Tasks.dll" />
+    <Resource Include="packages\EntityFramework.6.5.1\Icon.png" />
+    <Content Include="packages\EntityFramework.6.5.1\lib\net40\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.5.1\lib\net40\EntityFramework.SqlServer.dll" />
+    <Resource Include="packages\EntityFramework.6.5.1\lib\net40\EntityFramework.SqlServer.xml" />
+    <Resource Include="packages\EntityFramework.6.5.1\lib\net40\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll" />
+    <Resource Include="packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.xml" />
+    <Resource Include="packages\EntityFramework.6.5.1\lib\net45\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.5.1\lib\netstandard2.1\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.5.1\lib\netstandard2.1\EntityFramework.SqlServer.dll" />
+    <Resource Include="packages\EntityFramework.6.5.1\lib\netstandard2.1\EntityFramework.SqlServer.xml" />
+    <Resource Include="packages\EntityFramework.6.5.1\lib\netstandard2.1\EntityFramework.xml" />
+    <Resource Include="packages\EntityFramework.6.5.1\tools\about_EntityFramework6.help.txt" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net40\any\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net40\any\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net40\win-arm64\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net40\win-arm64\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net40\win-x86\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net40\win-x86\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net45\any\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net45\any\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net45\win-arm64\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net45\win-arm64\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net45\win-x86\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net45\win-x86\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net6.0\any\ef6.dll" />
+    <Content Include="packages\EntityFramework.6.5.1\tools\net6.0\any\ef6.pdb" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LS"
         mc:Ignorable="d"
-        Title="RentalHistory" Height="450" Width="800">
+        Title="RentalHistory" Height="450" Width="800" Loaded="Window_Loaded">
     <DockPanel Margin="15">
 
         <Border DockPanel.Dock="Top" BorderBrush="LightGray" BorderThickness="1" Padding="10" CornerRadius="5" Margin="0,0,0,15">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Chọn độc giả để xem lịch sử:" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                <ComboBox x:Name="UserComboBox" Width="300" Margin="10,0,0,0"/>
+                <ComboBox x:Name="UserComboBox" SelectionChanged="UserComboBox_SelectionChanged" Width="300" Margin="10,0,0,0"/>
             </StackPanel>
         </Border>
 
@@ -26,12 +26,13 @@
                 <DockPanel>
                     <TextBlock DockPanel.Dock="Top" Text="Danh sách đơn hàng" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
                     <DataGrid x:Name="OrdersGrid" 
+                              SelectionChanged="OrdersGrid_SelectionChanged"
                               AutoGenerateColumns="False" 
                               CanUserAddRows="False" 
                               IsReadOnly="True"
                               SelectionMode="Single">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID Đơn hàng" Binding="{Binding id}" Width="*"/>
+                            <DataGridTextColumn Header="ID Đơn hàng" Binding="{Binding Id}" Width="*"/>
                             <DataGridTextColumn Header="Ngày bắt đầu" Binding="{Binding start_date, StringFormat='dd/MM/yyyy HH:mm'}" Width="2*"/>
                             <DataGridTextColumn Header="Ngày kết thúc" Binding="{Binding end_date, StringFormat='dd/MM/yyyy HH:mm'}" Width="2*"/>
                             <DataGridTextColumn Header="Tổng số sách" Binding="{Binding total_book}" Width="*"/>
@@ -52,7 +53,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Tên sách" Binding="{Binding Book.name}" Width="2*"/>
                             <DataGridTextColumn Header="Tác giả" Binding="{Binding Book.author}" Width="2*"/>
-                            <DataGridTextColumn Header="Số lượng" Binding="{Binding quantity}" Width="*"/>
+                            <DataGridTextColumn Header="Số lượng" Binding="{Binding quanlity}" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>

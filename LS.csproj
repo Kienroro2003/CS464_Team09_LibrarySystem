@@ -103,6 +103,9 @@
     <Compile Include="Form_User.xaml.cs">
       <DependentUpon>Form_User.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Form_User_Update.xaml.cs">
+      <DependentUpon>Form_User_Update.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Form_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Form_User_Update.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

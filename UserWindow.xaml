@@ -67,7 +67,8 @@
                                 Background="White"
                                 Margin="10"
                                 Width="450"
-                                Padding="15">
+                                Padding="15"
+                                MouseLeftButtonDown="Border_MouseLeftButtonDown">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100"/>

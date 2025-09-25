@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\RentalHistoryViewModel.cs" />
     <Compile Include="ViewModel\RentBookViewModel.cs" />
     <Compile Include="Model\Book.cs">
       <DependentUpon>DataModel.tt</DependentUpon>

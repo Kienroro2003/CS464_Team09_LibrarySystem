@@ -65,7 +65,7 @@
                             <DataGridTemplateColumn Width="Auto">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button x:Name="DeleteButton" Content="Xóa" CommandParameter="{Binding book_id}" />
+                                        <Button x:Name="DeleteButton" Click="DeleteBookButton_Click" Content="Xóa" CommandParameter="{Binding book_id}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

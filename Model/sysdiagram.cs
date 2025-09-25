@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LS
+namespace LS.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Detail
+    public partial class sysdiagram
     {
-        public int Id { get; set; }
-        public string quanlity { get; set; }
-        public Nullable<int> order_id { get; set; }
-        public Nullable<int> book_id { get; set; }
-    
-        public virtual Book Book { get; set; }
-        public virtual Order Order { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

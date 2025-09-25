@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LS
+namespace LS.Model
 {
     using System;
     using System.Data.Entity;

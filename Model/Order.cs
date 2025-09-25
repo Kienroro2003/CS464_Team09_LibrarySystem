@@ -7,29 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LS
+namespace LS.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Book
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Book()
+        public Order()
         {
             this.Order_Detail = new HashSet<Order_Detail>();
         }
     
         public int Id { get; set; }
-        public string name { get; set; }
-        public string author { get; set; }
-        public string publisher { get; set; }
-        public string category { get; set; }
-        public Nullable<int> page { get; set; }
-        public Nullable<int> quanlity { get; set; }
-        public string url_image { get; set; }
+        public Nullable<System.DateTime> start_date { get; set; }
+        public Nullable<System.DateTime> end_date { get; set; }
+        public Nullable<int> total_book { get; set; }
+        public Nullable<int> user_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
+        public virtual User User { get; set; }
     }
 }

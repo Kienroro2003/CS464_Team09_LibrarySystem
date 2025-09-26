@@ -45,18 +45,17 @@ namespace LS
         }
 
         private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
+{
             if (sender is FrameworkElement fe && fe.DataContext is User selectedUser)
             {
                 Form_User_Update form = new Form_User_Update();
                 form.LoadUser(selectedUser);
-                form.ShowDialog();
-                // reload danh sách sau khi update
 
+                if (form.ShowDialog() == true)
+                {
+                    LoadUsers(); // reload danh sách sau khi update
+                }
             }
-            
-
-            LoadUsers();
         }
 
 

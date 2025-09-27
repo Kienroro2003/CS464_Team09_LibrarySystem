@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LS.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,19 +19,19 @@ namespace LS
     /// <summary>
     /// Interaction logic for Form_User.xaml
     /// </summary>
-    public partial class Form_User : Window
+    public partial class Form_User_Update : Window
     {
         Database1Entities1 db = new Database1Entities1();
         private User _editingUser;
         private ObservableCollection<User> _users;
 
 
-        public Form_User()
+        public Form_User_Update()
         {
             InitializeComponent();
         }
 
-        public void LoadUser(User user)
+        public void LoadUser(Model.User user)
         {
             _editingUser = db.Users.Find(user.Id); // lấy lại từ db (đảm bảo tracking)
             if (_editingUser != null)
@@ -53,6 +54,12 @@ namespace LS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (_editingUser == null)
+            {
+                MessageBox.Show("Không tìm thấy người dùng để cập nhật!");
+                return;
+            }
+
             string gender = null;
 
             if (rb_male.IsChecked == true)
@@ -65,18 +72,18 @@ namespace LS
                 MessageBox.Show("Vui lòng chọn giới tính!");
                 return;
             }
+
             DateTime? selectedDate = txt_birth.SelectedDate;
             if (selectedDate == null)
             {
                 MessageBox.Show("Vui lòng chọn ngày sinh!");
                 return;
             }
-            int roleId = 0;
 
+            int roleId = 0;
             if (cb_role.SelectedItem is ComboBoxItem selectedRole)
             {
                 string roleName = selectedRole.Content.ToString();
-
                 if (roleName == "Admin")
                     roleId = 1;
                 else if (roleName == "User")
@@ -87,23 +94,29 @@ namespace LS
                 MessageBox.Show("Vui lòng chọn vai trò!");
                 return;
             }
-            User user = new User
-            {
-                username = txt_username.Text.Trim(),
-                password = txt_pass.Password.Trim(),
-                fullname = txt_fullname.Text.Trim(),
-                gender = gender,
-                birthday = txt_birth.SelectedDate,
-                address = txt_addess.Text.Trim(),
-                phone = txt_phone.Text.Trim(),
-                role_id = roleId,
-            };
-            db.Users.Add(user);
-            db.SaveChanges();
-            MessageBox.Show("Thêm người dùng thành công thành công");
-            this.DialogResult = true; // Quan trọng
-            this.Close();
 
+            // ✅ Cập nhật thông tin cho user đang được sửa
+            _editingUser.username = txt_username.Text.Trim();
+            _editingUser.password = txt_pass.Password.Trim();
+            _editingUser.fullname = txt_fullname.Text.Trim();
+            _editingUser.gender = gender;
+            _editingUser.birthday = selectedDate.Value;
+            _editingUser.address = txt_addess.Text.Trim();
+            _editingUser.phone = txt_phone.Text.Trim();
+            _editingUser.role_id = roleId;
+
+            try
+            {
+                db.SaveChanges();
+                MessageBox.Show("Cập nhật người dùng thành công!");
+                this.DialogResult = true;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
+            }
         }
+
     }
 }

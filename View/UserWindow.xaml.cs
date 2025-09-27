@@ -1,14 +1,16 @@
-﻿using System.Collections.ObjectModel;
+﻿using LS.Model;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
-namespace LS
+namespace LS.View
 {
     public partial class UserWindow : Window, INotifyPropertyChanged
     {
         Database1Entities1 db = new Database1Entities1();
+
 
         private ObservableCollection<User> _users;
         public ObservableCollection<User> Users
@@ -34,7 +36,20 @@ namespace LS
 
         public void LoadUsers()
         {
-            Users = new ObservableCollection<User>(db.Users.ToList());
+            using (var newDb = new Database1Entities1())
+            {
+                Users = new ObservableCollection<User>(newDb.Users.ToList());
+            }
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            Form_Search_user form = new Form_Search_user();
+            if (form.ShowDialog() == true)
+            {
+                // ✅ Lấy kết quả tìm kiếm từ form
+                Users = new ObservableCollection<User>(form.SearchResult);
+            }
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
@@ -80,11 +95,6 @@ namespace LS
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            Form_Search_user form = new Form_Search_user();
-            form.ShowDialog();
-            LoadUsers();
-        }
+       
     }
 }

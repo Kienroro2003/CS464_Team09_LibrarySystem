@@ -23,5 +23,10 @@ namespace LS.View
         {
             InitializeComponent();
         }
+
+        private void BtnAddNew_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

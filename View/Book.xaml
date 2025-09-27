@@ -6,10 +6,10 @@
         mc:Ignorable="d"
         Title="Book" Height="450" Width="800">
 
-        <DockPanel LastChildFill="True" Margin="10">
+    <DockPanel LastChildFill="True" Margin="10">
 
-            <!-- Hàng trên: Search box + Search button (Dock Right) -->
-            <StackPanel DockPanel.Dock="Top"
+        <!-- Hàng trên: Search box + Search button (Dock Right) -->
+        <StackPanel DockPanel.Dock="Top"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="0,0,0,10">
@@ -21,69 +21,69 @@
                      ToolTip="Nhập từ khóa tìm kiếm"
                      Tag="Search..."
                     />
-                    <Button x:Name="btnSearch"
+            <Button x:Name="btnSearch"
                     Content="Tìm kiếm"
                     Width="100" Height="30"/>
-            </StackPanel>
+        </StackPanel>
 
-            <!-- Hàng thứ 2: Add New + ComboBox lọc thể loại -->
-            <StackPanel DockPanel.Dock="Top"
+        <!-- Hàng thứ 2: Add New + ComboBox lọc thể loại -->
+        <StackPanel DockPanel.Dock="Top"
                     Orientation="Horizontal"
                     HorizontalAlignment="Left"
                     Margin="0,0,0,10">
-                <Button x:Name="btnAddNew"
+            <Button x:Name="btnAddNew"
                     Content="Thêm Mới"
                     Width="100" Height="30"
-                    Margin="0,0,10,0"/>
-                <ComboBox x:Name="cbCategory"
+                    Margin="0,0,10,0" Click="BtnAddNew_Click"/>
+            <ComboBox x:Name="cbCategory"
                       Width="180" Height="30">
-                    <ComboBoxItem Content="All"/>
-                    <ComboBoxItem Content="Fiction"/>
-                    <ComboBoxItem Content="Science"/>
-                    <ComboBoxItem Content="History"/>
-                </ComboBox>
-            </StackPanel>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="Fiction"/>
+                <ComboBoxItem Content="Science"/>
+                <ComboBoxItem Content="History"/>
+            </ComboBox>
+        </StackPanel>
 
-            <!-- Hàng thứ 3: DataGrid hiển thị list sách -->
-            <DataGrid x:Name="dgBooks"
+        <!-- Hàng thứ 3: DataGrid hiển thị list sách -->
+        <DataGrid x:Name="dgBooks"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   Height="350"
                   Margin="0,0,0,10">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Title}" Width="15"/>
-                    <DataGridTextColumn Header="Tên sách" Binding="{Binding Title}" Width="*"/>
-                    <DataGridTextColumn Header="Tác giả" Binding="{Binding Author}" Width="150"/>
-                    <DataGridTextColumn Header="NXB" Binding="{Binding Author}" Width="100"/>
-                    <DataGridTextColumn Header="Thể loại" Binding="{Binding Category}" Width="100"/>
-                    <DataGridTextColumn Header="Số Trang" Binding="{Binding Category}" Width="60"/>
-                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Price}" Width="60"/>
-                    <DataGridTextColumn Header="Hình ảnh" Binding="{Binding Price}" Width="90"/>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Title}" Width="15"/>
+                <DataGridTextColumn Header="Tên sách" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Tác giả" Binding="{Binding Author}" Width="150"/>
+                <DataGridTextColumn Header="NXB" Binding="{Binding Author}" Width="100"/>
+                <DataGridTextColumn Header="Thể loại" Binding="{Binding Category}" Width="100"/>
+                <DataGridTextColumn Header="Số Trang" Binding="{Binding Category}" Width="60"/>
+                <DataGridTextColumn Header="Số lượng" Binding="{Binding Price}" Width="60"/>
+                <DataGridTextColumn Header="Hình ảnh" Binding="{Binding Price}" Width="90"/>
 
-                    <!-- Cột nút Sửa -->
-                    <DataGridTemplateColumn Header="Sửa" Width="60">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="btnEdit" Content="Edit" Width="60"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                <!-- Cột nút Sửa -->
+                <DataGridTemplateColumn Header="Sửa" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEdit" Content="Edit" Width="60"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                    <!-- Cột nút Xóa -->
-                    <DataGridTemplateColumn Header="Xóa" Width="60">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="btnDelete" Content="Delete" Width="60"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
+                <!-- Cột nút Xóa -->
+                <DataGridTemplateColumn Header="Xóa" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnDelete" Content="Delete" Width="60"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
 
-                <!-- Hai hàng dữ liệu mẫu -->
-                <DataGrid.Items>
-                    <!--<local:BookItem Title="Book B" Author="Author B" Category="Science" Price="$15"/>-->
-                </DataGrid.Items>
-            </DataGrid>
+            <!-- Hai hàng dữ liệu mẫu -->
+            <DataGrid.Items>
+                <!--<local:BookItem Title="Book B" Author="Author B" Category="Science" Price="$15"/>-->
+            </DataGrid.Items>
+        </DataGrid>
 
-        </DockPanel>
+    </DockPanel>
 </Window>

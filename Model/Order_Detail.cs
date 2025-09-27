@@ -7,23 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LS
+namespace LS.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Order_Detail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public int Id { get; set; }
-        public string name { get; set; }
+        public string quanlity { get; set; }
+        public Nullable<int> order_id { get; set; }
+        public Nullable<int> book_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual Book Book { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

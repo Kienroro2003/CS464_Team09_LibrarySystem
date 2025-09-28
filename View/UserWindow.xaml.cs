@@ -1,4 +1,5 @@
 ﻿using LS.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -74,19 +75,48 @@ namespace LS.View
         }
 
 
+        //private void DeleteUser_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (sender is FrameworkElement fe && fe.DataContext is User selectedUser)
+        //    {
+        //        var user = db.Users.Find(selectedUser.Id);
+        //        if (user != null)
+        //        {
+        //            db.Users.Remove(user);
+        //            db.SaveChanges();
+        //            Users.Remove(selectedUser);
+        //        }
+        //    }
+        //}
+
         private void DeleteUser_Click(object sender, RoutedEventArgs e)
         {
             if (sender is FrameworkElement fe && fe.DataContext is User selectedUser)
             {
-                var user = db.Users.Find(selectedUser.Id);
-                if (user != null)
+                var result = MessageBox.Show(
+                    $"Bạn có chắc muốn xóa người dùng '{selectedUser.username}' không?",
+                    "Xác nhận xóa",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question
+                );
+
+                if (result == MessageBoxResult.Yes)
                 {
-                    db.Users.Remove(user);
-                    db.SaveChanges();
-                    Users.Remove(selectedUser);
+                    try
+                    {
+                        var userVM = new ViewModel.UserViewModel();
+                        userVM.DeleteUser(selectedUser);  // ✅ Gọi lại hàm cũ trong ViewModel
+                        Users.Remove(selectedUser);       // ✅ Xóa luôn khỏi danh sách hiển thị
+                        MessageBox.Show("Đã xóa người dùng thành công!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi xóa người dùng: " + ex.Message);
+                    }
                 }
             }
         }
+
 
         // Triển khai INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

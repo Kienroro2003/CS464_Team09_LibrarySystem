@@ -1,39 +1,24 @@
 ﻿using LS.Model;
+using LS.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LS
 {
-    /// <summary>
-    /// Interaction logic for Form_User.xaml
-    /// </summary>
     public partial class Form_User_Update : Window
     {
-        Database1Entities1 db = new Database1Entities1();
         private User _editingUser;
-        private ObservableCollection<User> _users;
-
+        private UserViewModel _userVM = new UserViewModel();
 
         public Form_User_Update()
         {
             InitializeComponent();
         }
 
-        public void LoadUser(Model.User user)
+        public void LoadUser(User user)
         {
-            _editingUser = db.Users.Find(user.Id); // lấy lại từ db (đảm bảo tracking)
+            _editingUser = user; // giữ object gốc để truyền cho ViewModel khi cập nhật
             if (_editingUser != null)
             {
                 txt_username.Text = _editingUser.username;
@@ -61,7 +46,6 @@ namespace LS
             }
 
             string gender = null;
-
             if (rb_male.IsChecked == true)
                 gender = rb_male.Content.ToString();
             else if (rb_female.IsChecked == true)
@@ -84,10 +68,7 @@ namespace LS
             if (cb_role.SelectedItem is ComboBoxItem selectedRole)
             {
                 string roleName = selectedRole.Content.ToString();
-                if (roleName == "Admin")
-                    roleId = 1;
-                else if (roleName == "User")
-                    roleId = 2;
+                roleId = roleName == "Admin" ? 1 : 2;
             }
             else
             {
@@ -95,7 +76,7 @@ namespace LS
                 return;
             }
 
-            // ✅ Cập nhật thông tin cho user đang được sửa
+            // Gán dữ liệu mới vào object _editingUser
             _editingUser.username = txt_username.Text.Trim();
             _editingUser.password = txt_pass.Password.Trim();
             _editingUser.fullname = txt_fullname.Text.Trim();
@@ -107,9 +88,9 @@ namespace LS
 
             try
             {
-                db.SaveChanges();
+                _userVM.UpdateUser(_editingUser); // Gọi ViewModel xử lý
                 MessageBox.Show("Cập nhật người dùng thành công!");
-                this.DialogResult = true;
+                this.DialogResult = true; // thông báo cho UserWindow reload
                 this.Close();
             }
             catch (Exception ex)
@@ -117,6 +98,5 @@ namespace LS
                 MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
             }
         }
-
     }
 }

@@ -92,7 +92,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Cancel" Grid.Column="0" Grid.Row="2"/>
+                <Button Content="Cancel" Grid.Column="0" Grid.Row="2" Click="Button_Click"/>
                 <Button Content="Search" Grid.Column="4" Grid.Row="2" Click="Search_Click" />
             </Grid>
         </GroupBox>

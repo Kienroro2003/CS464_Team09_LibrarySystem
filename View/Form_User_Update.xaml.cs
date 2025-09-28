@@ -98,5 +98,10 @@ namespace LS
                 MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

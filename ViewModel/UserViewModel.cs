@@ -15,16 +15,33 @@ namespace LS.ViewModel
             db.Users.Add(user);
             db.SaveChanges();
         }
-        
+
         public void DeleteUser(Model.User userDele)
         {
-            Model.User user = db.Users.Find(userDele.Id);
-            if(user != null)
+            var user = db.Users.Find(userDele.Id);
+            if (user != null)
             {
+                // Lấy tất cả các đơn hàng của user
+                var orders = db.Orders.Where(o => o.user_id == user.Id).ToList();
+
+                foreach (var order in orders)
+                {
+                    // Xóa chi tiết từng đơn hàng trước
+                    var orderDetails = db.Order_Detail.Where(d => d.order_id == order.Id).ToList();
+                    db.Order_Detail.RemoveRange(orderDetails);
+                }
+
+                // Sau đó xóa các đơn hàng
+                db.Orders.RemoveRange(orders);
+
+                // Cuối cùng xóa user
                 db.Users.Remove(user);
+
                 db.SaveChanges();
             }
         }
+
+
 
         public void UpdateUser(Model.User updateUser)
         {

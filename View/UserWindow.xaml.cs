@@ -5,13 +5,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls; // Thêm using này
 
 namespace LS.View
 {
-    public partial class UserWindow : Window, INotifyPropertyChanged
+    public partial class UserWindow : Page, INotifyPropertyChanged // Thay đổi ở đây
     {
         Database1Entities1 db = new Database1Entities1();
-
 
         private ObservableCollection<User> _users;
         public ObservableCollection<User> Users
@@ -20,7 +20,7 @@ namespace LS.View
             set
             {
                 _users = value;
-                OnPropertyChanged(); // báo cho UI biết thuộc tính đã đổi
+                OnPropertyChanged();
             }
         }
 
@@ -48,7 +48,6 @@ namespace LS.View
             Form_Search_user form = new Form_Search_user();
             if (form.ShowDialog() == true)
             {
-                // ✅ Lấy kết quả tìm kiếm từ form
                 Users = new ObservableCollection<User>(form.SearchResult);
             }
         }
@@ -61,7 +60,7 @@ namespace LS.View
         }
 
         private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-{
+        {
             if (sender is FrameworkElement fe && fe.DataContext is User selectedUser)
             {
                 Form_User_Update form = new Form_User_Update();
@@ -69,25 +68,10 @@ namespace LS.View
 
                 if (form.ShowDialog() == true)
                 {
-                    LoadUsers(); // reload danh sách sau khi update
+                    LoadUsers();
                 }
             }
         }
-
-
-        //private void DeleteUser_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (sender is FrameworkElement fe && fe.DataContext is User selectedUser)
-        //    {
-        //        var user = db.Users.Find(selectedUser.Id);
-        //        if (user != null)
-        //        {
-        //            db.Users.Remove(user);
-        //            db.SaveChanges();
-        //            Users.Remove(selectedUser);
-        //        }
-        //    }
-        //}
 
         private void DeleteUser_Click(object sender, RoutedEventArgs e)
         {
@@ -105,8 +89,8 @@ namespace LS.View
                     try
                     {
                         var userVM = new ViewModel.UserViewModel();
-                        userVM.DeleteUser(selectedUser);  // ✅ Gọi lại hàm cũ trong ViewModel
-                        Users.Remove(selectedUser);       // ✅ Xóa luôn khỏi danh sách hiển thị
+                        userVM.DeleteUser(selectedUser);
+                        Users.Remove(selectedUser);
                         MessageBox.Show("Đã xóa người dùng thành công!");
                     }
                     catch (Exception ex)
@@ -117,14 +101,10 @@ namespace LS.View
             }
         }
 
-
-        // Triển khai INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-       
     }
 }

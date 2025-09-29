@@ -17,7 +17,7 @@ namespace LS.View
     /// <summary>
     /// Interaction logic for AddBook.xaml
     /// </summary>
-    public partial class AddBook : Window
+    public partial class AddBook : Page
     {
         public AddBook()
         {

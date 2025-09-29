@@ -8,19 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LS
 {
-    /// <summary>
-    /// Interaction logic for RentBook.xaml
-    /// </summary>
-    public partial class RentBook : Window
+    public partial class RentBook : Page // Thay đổi ở đây
     {
         private RentBookViewModel viewModel = new RentBookViewModel();
         private ObservableCollection<Order_Detail> cartItems;
@@ -34,9 +25,7 @@ namespace LS
         {
             cartItems = new ObservableCollection<Order_Detail>();
             OrderDetailGrid.ItemsSource = cartItems;
-
             viewModel.LoadUsers(UserComboBox);
-
             StartDatePicker.SelectedDate = DateTime.Now;
             EndDatePicker.SelectedDate = DateTime.Now.AddDays(14);
         }
@@ -67,12 +56,15 @@ namespace LS
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.ConfirmRental(UserComboBox, StartDatePicker, EndDatePicker, cartItems, this);
+            // Vì đây là Page, không có 'this' để close, ta sẽ tìm Window cha
+            Window parentWindow = Window.GetWindow(this);
+            viewModel.ConfirmRental(UserComboBox, StartDatePicker, EndDatePicker, cartItems, parentWindow);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            // Có thể làm trống các trường thay vì đóng
+            // Hoặc điều hướng về trang trước đó
         }
     }
 }

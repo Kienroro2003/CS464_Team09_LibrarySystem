@@ -1,23 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LS.View
 {
-    /// <summary>
-    /// Interaction logic for Book.xaml
-    /// </summary>
-    public partial class Book : Window
+    public partial class Book : Page // Thay đổi ở đây
     {
         public Book()
         {
@@ -26,7 +12,7 @@ namespace LS.View
 
         private void BtnAddNew_Click(object sender, RoutedEventArgs e)
         {
-
+            // Thêm logic để mở cửa sổ AddBook.xaml
         }
     }
 }

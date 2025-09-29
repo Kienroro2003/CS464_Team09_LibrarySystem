@@ -5,6 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid></Grid>
+        Title="Hệ thống Thư viện" Height="600" Width="900" WindowState="Maximized">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" FontSize="14">
+            <MenuItem Header="_Trang chủ">
+            </MenuItem>
+            <MenuItem Header="_Quản lý">
+                <MenuItem Header="Quản lý Người dùng" Click="MenuItem_UserManagement_Click"/>
+                <MenuItem Header="Quản lý Sách" Click="MenuItem_BookManagement_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Nghiệp vụ">
+                <MenuItem Header="Mượn sách" Click="MenuItem_RentBook_Click"/>
+                <MenuItem Header="Lịch sử mượn" Click="MenuItem_RentalHistory_Click"/>
+            </MenuItem>
+            <!--<MenuItem Header="_Đăng xuất" Click="MenuItem_Logout_Click"/>-->
+        </Menu>
+
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
 </Window>

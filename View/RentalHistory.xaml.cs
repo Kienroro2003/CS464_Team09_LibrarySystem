@@ -5,7 +5,7 @@ using System.Windows.Controls;
 
 namespace LS
 {
-    public partial class RentalHistory : Window
+    public partial class RentalHistory : Page // Thay đổi ở đây
     {
         private RentalHistoryViewModel viewModel = new RentalHistoryViewModel();
 

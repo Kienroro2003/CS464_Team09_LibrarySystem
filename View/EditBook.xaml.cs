@@ -17,7 +17,7 @@ namespace LS.View
     /// <summary>
     /// Interaction logic for EditBook.xaml
     /// </summary>
-    public partial class EditBook : Window
+    public partial class EditBook : Page
     {
         public EditBook()
         {

@@ -102,11 +102,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="View\Form_Search_user.xaml.cs">
       <DependentUpon>Form_Search_user.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Form_User.xaml.cs">
       <DependentUpon>Form_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_User_Update.xaml.cs">
+      <DependentUpon>Form_User_Update.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Order.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
@@ -149,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Form_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Form_User_Update.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +265,13 @@
     <Content Include="Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database2.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database2_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database2.mdf</DependentUpon>
     </Content>
     <Content Include="Model\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

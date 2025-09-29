@@ -19,9 +19,29 @@ namespace LS.View
     /// </summary>
     public partial class Book : Window
     {
+        ViewModel.BookViewModel bvm = new ViewModel.BookViewModel();
         public Book()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            bvm.LoadSach(dgBooks);
+        }
+
+        private void BtnAddNew_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                View.AddBook addBookView = new View.AddBook();
+                addBookView.Closed += (s, args) => bvm.LoadSach(dgBooks); 
+                addBookView.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi mở cửa sổ: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

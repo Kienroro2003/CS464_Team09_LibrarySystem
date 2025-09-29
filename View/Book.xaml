@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Book" Height="450" Width="800">
+        Title="Book" Height="450" Width="800" Loaded="Window_Loaded">
 
         <DockPanel LastChildFill="True" Margin="10">
 
@@ -34,7 +34,7 @@
                 <Button x:Name="btnAddNew"
                     Content="Thêm Mới"
                     Width="100" Height="30"
-                    Margin="0,0,10,0"/>
+                    Margin="0,0,10,0" Click="BtnAddNew_Click"/>
                 <ComboBox x:Name="cbCategory"
                       Width="180" Height="30">
                     <ComboBoxItem Content="All"/>
@@ -51,14 +51,14 @@
                   Height="350"
                   Margin="0,0,0,10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Title}" Width="15"/>
-                    <DataGridTextColumn Header="Tên sách" Binding="{Binding Title}" Width="*"/>
-                    <DataGridTextColumn Header="Tác giả" Binding="{Binding Author}" Width="150"/>
-                    <DataGridTextColumn Header="NXB" Binding="{Binding Author}" Width="100"/>
-                    <DataGridTextColumn Header="Thể loại" Binding="{Binding Category}" Width="100"/>
-                    <DataGridTextColumn Header="Số Trang" Binding="{Binding Category}" Width="60"/>
-                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Price}" Width="60"/>
-                    <DataGridTextColumn Header="Hình ảnh" Binding="{Binding Price}" Width="90"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="15"/>
+                <DataGridTextColumn Header="Tên sách" Binding="{Binding name}" Width="*"/>
+                <DataGridTextColumn Header="Tác giả" Binding="{Binding author}" Width="100"/>
+                <DataGridTextColumn Header="NXB" Binding="{Binding publisher}" Width="80"/>
+                <DataGridTextColumn Header="Thể loại" Binding="{Binding category}" Width="80"/>
+                <DataGridTextColumn Header="Số Trang" Binding="{Binding page}" Width="60"/>
+                <DataGridTextColumn Header="Số lượng" Binding="{Binding quanlity}" Width="60"/>
+                <DataGridTextColumn Header="Hình ảnh" Binding="{Binding url_image}" Width="90"/>
 
                     <!-- Cột nút Sửa -->
                     <DataGridTemplateColumn Header="Sửa" Width="60">

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Kienroro\CS464_Team09_LibrarySystem\Model\DataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\ASUS\source\repos\CS464_Team09_LibrarySystem2\Model\DataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -103,11 +103,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="View\Form_Search_user.xaml.cs">
       <DependentUpon>Form_Search_user.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Form_User.xaml.cs">
       <DependentUpon>Form_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_User_Update.xaml.cs">
+      <DependentUpon>Form_User_Update.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Order.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
@@ -150,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Form_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Form_User_Update.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,10 +322,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

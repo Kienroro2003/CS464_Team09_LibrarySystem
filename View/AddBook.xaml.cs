@@ -19,7 +19,7 @@ namespace LS.View
     /// <summary>
     /// Interaction logic for AddBook.xaml
     /// </summary>
-    public partial class AddBook : Window
+    public partial class AddBook : Page
     {
         public AddBook()
         {
@@ -50,7 +50,7 @@ namespace LS.View
                 };
 
                 bvm.ThemSach(newBook);
-                Close(); 
+                //Close(); 
             }
             catch (Exception ex)
             {
@@ -92,7 +92,7 @@ namespace LS.View
             MessageBoxResult rs = MessageBox.Show("Bạn chắc chắn muốn thoát!", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (rs == MessageBoxResult.Yes)
             {
-                Close();
+                //Close();
             }
         }
     }

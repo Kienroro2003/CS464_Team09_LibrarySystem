@@ -19,7 +19,7 @@ namespace LS.View
     /// <summary>
     /// Interaction logic for EditBook.xaml
     /// </summary>
-    public partial class EditBook : Window
+    public partial class EditBook : Page
     {
         private Model.Book _book; // Lưu dữ liệu sách
         private string selectedImagePath;
@@ -78,7 +78,7 @@ namespace LS.View
                 // Gọi hàm cập nhật từ ViewModel
                 bvm.CapNhatSach(_book);
 
-                this.Close();
+                //this.Close();
             }
             catch (Exception ex)
             {
@@ -119,7 +119,7 @@ namespace LS.View
             MessageBoxResult rs = MessageBox.Show("Bạn chắc chắn muốn thoát?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (rs == MessageBoxResult.Yes)
             {
-                Close(); 
+                //Close(); 
             }
         }
     }

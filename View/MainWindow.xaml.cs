@@ -1,28 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LS
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            // Tải trang mặc định khi khởi động
+            MainFrame.Navigate(new Uri("View/UserWindow.xaml", UriKind.Relative));
         }
+
+        private void MenuItem_UserManagement_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("View/UserWindow.xaml", UriKind.Relative));
+        }
+
+        private void MenuItem_BookManagement_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("View/Book.xaml", UriKind.Relative));
+        }
+
+        private void MenuItem_RentBook_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("View/RentBook.xaml", UriKind.Relative));
+        }
+
+        private void MenuItem_RentalHistory_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("View/RentalHistory.xaml", UriKind.Relative));
+        }
+
+        //private void MenuItem_Logout_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Mở cửa sổ Login và đóng cửa sổ hiện tại
+        //    Login loginWindow = new Login();
+        //    loginWindow.Show();
+        //    this.Close();
+        //}
     }
 }

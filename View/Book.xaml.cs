@@ -1,91 +1,74 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LS.Model; // Đảm bảo bạn đã using Model
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Navigation; // Thêm using cho Navigation
 
 namespace LS.View
 {
-    /// <summary>
-    /// Interaction logic for Book.xaml
-    /// </summary>
-    public partial class Book : Window
+    public partial class Book : Page
     {
-        ViewModel.BookViewModel bvm = new ViewModel.BookViewModel();
+        // Khởi tạo ViewModel để quản lý logic
+        private ViewModel.BookViewModel bvm = new ViewModel.BookViewModel();
+
         public Book()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            // Tải danh sách sách khi trang được mở
             bvm.LoadSach(dgBooks);
+            MessageBox.Show("Dữ liệu sách đã được tải (giả lập)."); // Dùng để kiểm tra
         }
 
         private void BtnAddNew_Click(object sender, RoutedEventArgs e)
         {
-            try
+            // Sử dụng NavigationService để chuyển đến trang AddBook
+            if (this.NavigationService != null)
             {
-                AddBook addBookView = new AddBook();
-                addBookView.Closed += (s, args) => bvm.LoadSach(dgBooks); 
-                addBookView.ShowDialog();
-                bvm.LoadSach(dgBooks);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi mở cửa sổ: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.NavigationService.Navigate(new AddBook());
             }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
-            if (btn == null) return;
-
-            Model.Book selectedBook = btn.DataContext as Model.Book;
-            if (selectedBook == null)
+            // Lấy sách được chọn từ DataContext của button
+            if (sender is Button btn && btn.DataContext is Model.Book selectedBook)
             {
-                MessageBox.Show("Không tìm thấy dữ liệu sách!");
-                return;
+                // Chuyển đến trang EditBook và truyền đối tượng sách qua constructor
+                if (this.NavigationService != null)
+                {
+                    this.NavigationService.Navigate(new EditBook(selectedBook));
+                }
             }
-
-            // Mở window UpdateBook và truyền dữ liệu sách
-            EditBook editBook = new EditBook(selectedBook);
-            editBook.ShowDialog();
-            bvm.LoadSach(dgBooks);
+            else
+            {
+                MessageBox.Show("Không thể lấy thông tin sách để chỉnh sửa.");
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
-            Model.Book selectedBook = btn.DataContext as Model.Book;
-            if (selectedBook != null)
+            if (sender is Button btn && btn.DataContext is Model.Book selectedBook)
             {
-                MessageBoxResult rs = MessageBox.Show($"Xóa sách : {selectedBook.name}", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Error);
-                if (rs == MessageBoxResult.Yes)
+                MessageBoxResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa sách: '{selectedBook.name}'?", "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
                 {
+                    // Gọi phương thức xóa từ ViewModel
                     bvm.XoaSach(selectedBook);
                     bvm.LoadSach(dgBooks);
+                    MessageBox.Show("Đã xóa sách thành công (giả lập).");
                 }
             }
         }
 
-        private void DgBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
+            // Gọi phương thức tìm kiếm từ ViewModel
             bvm.TimKiem(dgBooks, txtSearch.Text);
+            MessageBox.Show($"Đang tìm kiếm với từ khóa: '{txtSearch.Text}' (giả lập).");
         }
     }
 }

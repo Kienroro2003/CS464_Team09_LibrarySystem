@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LS
+namespace LS.View
 {
     /// <summary>
     /// Interaction logic for Form_User.xaml
@@ -22,68 +22,58 @@ namespace LS
     public partial class Form_User : Window
     {
         Database1Entities1 db = new Database1Entities1();
-
+        private User _editingUser;
         private ObservableCollection<User> _users;
 
-
+        ViewModel.UserViewModel umd = new ViewModel.UserViewModel();
+       
         public Form_User()
         {
             InitializeComponent();
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string gender = null;
-
             if (rb_male.IsChecked == true)
                 gender = rb_male.Content.ToString();
             else if (rb_female.IsChecked == true)
                 gender = rb_female.Content.ToString();
 
-            if (string.IsNullOrEmpty(gender))
-            {
-                MessageBox.Show("Vui lòng chọn giới tính!");
-                return;
-            }
-            DateTime? selectedDate = txt_birth.SelectedDate;
-            if (selectedDate == null)
-            {
-                MessageBox.Show("Vui lòng chọn ngày sinh!");
-                return;
-            }
             int roleId = 0;
-
             if (cb_role.SelectedItem is ComboBoxItem selectedRole)
             {
                 string roleName = selectedRole.Content.ToString();
-
-                if (roleName == "Admin")
-                    roleId = 1;
-                else if (roleName == "User")
-                    roleId = 2;
+                roleId = roleName == "Admin" ? 1 : 2; // 1 = Admin, 2 = User
             }
             else
             {
                 MessageBox.Show("Vui lòng chọn vai trò!");
                 return;
             }
-            User user = new User
+
+            Model.User user = new Model.User
             {
                 username = txt_username.Text.Trim(),
                 password = txt_pass.Password.Trim(),
                 fullname = txt_fullname.Text.Trim(),
                 gender = gender,
-                birthday = selectedDate.Value,
+                birthday = txt_birth.SelectedDate,
                 address = txt_addess.Text.Trim(),
                 phone = txt_phone.Text.Trim(),
-                role_id = roleId,
+                role_id = roleId
             };
-            db.Users.Add(user);
-            db.SaveChanges();
+            umd.AddUser(user);
             MessageBox.Show("Thêm người dùng thành công thành công");
             this.DialogResult = true; // Quan trọng
             this.Close();
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace LS.ViewModel
         {
             try
             {
-                var b = DB.Books.Find(book.Id); 
+                Model.Book b = DB.Books.Find(book.Id); 
                 if (b != null)
                 {
                     b.name = book.name;
@@ -71,9 +71,11 @@ namespace LS.ViewModel
         {
             try
             {
-                var b = DB.Books.Find(book.Id); 
+                Model.Book b = DB.Books.Find(book.Id); 
                 if (b != null)
                 {
+                    var borrowRecords = DB.Order_Detail.Where(x => x.Id == book.Id).ToList();
+                    DB.Order_Detail.RemoveRange(borrowRecords);
                     DB.Books.Remove(b);
                     DB.SaveChanges();
                     MessageBox.Show("Xóa sách thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);

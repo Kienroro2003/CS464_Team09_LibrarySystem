@@ -43,6 +43,7 @@ namespace LS.View
                     name = txtTenSach.Text,
                     author = txtTacGia.Text,
                     publisher = txtNhaXuatBan.Text,
+                    category = txtTheLoai.Text,
                     page = string.IsNullOrEmpty(txtSoTrang.Text) ? 0 : int.Parse(txtSoTrang.Text),
                     quanlity = string.IsNullOrEmpty(txtSoLuong.Text) ? 0 : int.Parse(txtSoLuong.Text),
                     url_image = selectedImagePath 
@@ -83,6 +84,15 @@ namespace LS.View
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi chọn hình: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnHuyThemMoi_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult rs = MessageBox.Show("Bạn chắc chắn muốn thoát!", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (rs == MessageBoxResult.Yes)
+            {
+                Close();
             }
         }
     }

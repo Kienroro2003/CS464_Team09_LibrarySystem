@@ -49,7 +49,7 @@
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   Height="350"
-                  Margin="0,0,0,10">
+                  Margin="0,0,0,10" SelectionChanged="DgBooks_SelectionChanged">
                 <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="15"/>
                 <DataGridTextColumn Header="Tên sách" Binding="{Binding name}" Width="*"/>
@@ -64,7 +64,7 @@
                     <DataGridTemplateColumn Header="Sửa" Width="60">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="btnEdit" Content="Edit" Width="60"/>
+                                <Button x:Name="btnEdit" Content="Edit" Width="60" Click="BtnEdit_Click" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -73,17 +73,11 @@
                     <DataGridTemplateColumn Header="Xóa" Width="60">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="btnDelete" Content="Delete" Width="60"/>
+                                <Button x:Name="btnDelete" Content="Delete" Width="60" Click="BtnDelete_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
-
-                <!-- Hai hàng dữ liệu mẫu -->
-                <DataGrid.Items>
-                    <!--<local:BookItem Title="Book B" Author="Author B" Category="Science" Price="$15"/>-->
-                </DataGrid.Items>
             </DataGrid>
-
-        </DockPanel>
+    </DockPanel>
 </Window>

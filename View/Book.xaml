@@ -23,7 +23,7 @@
                     />
                     <Button x:Name="btnSearch"
                     Content="Tìm kiếm"
-                    Width="100" Height="30"/>
+                    Width="100" Height="30" Click="BtnSearch_Click"/>
             </StackPanel>
 
             <!-- Hàng thứ 2: Add New + ComboBox lọc thể loại -->
@@ -35,13 +35,6 @@
                     Content="Thêm Mới"
                     Width="100" Height="30"
                     Margin="0,0,10,0" Click="BtnAddNew_Click"/>
-                <ComboBox x:Name="cbCategory"
-                      Width="180" Height="30">
-                    <ComboBoxItem Content="All"/>
-                    <ComboBoxItem Content="Fiction"/>
-                    <ComboBoxItem Content="Science"/>
-                    <ComboBoxItem Content="History"/>
-                </ComboBox>
             </StackPanel>
 
             <!-- Hàng thứ 3: DataGrid hiển thị list sách -->

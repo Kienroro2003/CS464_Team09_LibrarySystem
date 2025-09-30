@@ -73,14 +73,19 @@ namespace LS.View
                 if (rs == MessageBoxResult.Yes)
                 {
                     bvm.XoaSach(selectedBook);
-                }
                     bvm.LoadSach(dgBooks);
+                }
             }
         }
 
         private void DgBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            bvm.TimKiem(dgBooks, txtSearch.Text);
         }
     }
 }

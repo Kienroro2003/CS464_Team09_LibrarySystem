@@ -74,7 +74,7 @@ namespace LS.ViewModel
                 Model.Book b = DB.Books.Find(book.Id); 
                 if (b != null)
                 {
-                    var borrowRecords = DB.Order_Detail.Where(x => x.Id == book.Id).ToList();
+                    var borrowRecords = DB.Order_Detail.Where(x => x.book_id == book.Id).ToList();
                     DB.Order_Detail.RemoveRange(borrowRecords);
                     DB.Books.Remove(b);
                     DB.SaveChanges();
@@ -88,6 +88,36 @@ namespace LS.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi xóa sách: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void TimKiem(DataGrid dg, string tuKhoa)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(tuKhoa))
+                {
+                    LoadSach(dg);
+                    return;
+                }
+
+                string keyword = tuKhoa.ToLower().Trim();
+                var ketQua = DB.Books.Where(x =>
+                    (x.name != null && x.name.ToLower().Contains(keyword)) ||
+                    (x.author != null && x.author.ToLower().Contains(keyword))
+                ).ToList();
+
+                dg.ItemsSource = null;
+                dg.ItemsSource = ketQua;
+
+                if (ketQua.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy sách phù hợp", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi tìm kiếm: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
